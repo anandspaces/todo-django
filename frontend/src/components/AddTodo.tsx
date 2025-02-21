@@ -2,16 +2,27 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../features/todo/todoSlice";
 import { AppDispatch } from "../app/store";
+import axios from "axios";
 
-function AddTodo() {
+function AddTodo({ onAdd }: { onAdd: () => void }) {
   const [input, setInput] = useState<string>("");
   const dispatch = useDispatch<AppDispatch>();
 
-  function addTodoHandler(e: React.FormEvent<HTMLFormElement>) {
+  async function addTodoHandler(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (input.trim() === "") return;
-    dispatch(addTodo(input));
-    setInput("");
+
+    try {
+      await axios.post("http://127.0.0.1:8000/api/todos/", {
+        text: input,
+      });
+      setInput("");
+      onAdd(); // Trigger re-fetching of todos
+    } catch (error) {
+      console.error("Failed to connect with backend", error);
+      dispatch(addTodo(input));
+      setInput("");
+    }
   }
 
   return (
