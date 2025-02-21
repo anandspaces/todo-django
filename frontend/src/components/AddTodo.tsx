@@ -8,7 +8,7 @@ function AddTodo({ onAdd }: { onAdd: () => void }) {
   const [input, setInput] = useState<string>("");
   const dispatch = useDispatch<AppDispatch>();
 
-  async function addTodoHandler(e: React.FormEvent<HTMLFormElement>) {
+  const addTodoHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (input.trim() === "") return;
 
@@ -19,8 +19,8 @@ function AddTodo({ onAdd }: { onAdd: () => void }) {
       setInput("");
       onAdd(); // Trigger re-fetching of todos
     } catch (error) {
-      console.error("Failed to connect with backend", error);
-      dispatch(addTodo(input));
+      console.error("Failed to connect with backend:", error);
+      dispatch(addTodo(input)); // Update Redux state as fallback
       setInput("");
     }
   }
