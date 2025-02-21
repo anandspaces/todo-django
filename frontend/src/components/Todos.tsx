@@ -7,16 +7,18 @@ function Todos() {
   const dispatch = useDispatch<AppDispatch>();
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-md mx-auto mt-8">
-      <h2 className="text-xl font-bold mb-4 text-gray-700">Todo List</h2>
-      <ul className="space-y-3">
+    <div className="bg-white w-full max-w-md rounded-lg shadow-lg p-6 mt-6">
+      <h2 className="text-2xl font-bold text-gray-800 mb-4">Your Todos</h2>
+      <ul
+        className="space-y-3 max-h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100"
+      >
         {todos.length > 0 ? (
           todos.map((todo: Todo) => (
             <li
               key={todo.id}
-              className="flex justify-between items-center bg-gray-100 p-3 rounded-lg"
+              className="flex justify-between items-center bg-gray-100 p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
             >
-              <span className="text-gray-800">{todo.text}</span>
+              <span className="text-gray-700">{todo.text}</span>
               <button
                 onClick={() => dispatch(removeTodo(todo.id))}
                 className="text-red-500 hover:text-red-700 transition-all duration-200"

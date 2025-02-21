@@ -15,24 +15,24 @@ function AddTodo() {
   }
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-md mx-auto">
-      <h2 className="text-xl font-bold mb-4 text-gray-700">Add New Todo</h2>
-      <form onSubmit={addTodoHandler} className="flex items-center space-x-2">
+    <>
+      <h2 className="text-2xl font-bold text-gray-800 mb-4">Add New Todo</h2>
+      <form onSubmit={addTodoHandler} className="flex items-center space-x-3">
         <input
           type="text"
-          className="flex-grow p-2 border rounded-lg outline-none focus:ring-2 focus:ring-blue-400"
+          className="flex-grow p-3 border border-gray-300 rounded-lg shadow-sm outline-none focus:ring-2 focus:ring-blue-400"
           placeholder="Enter Todo"
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
         <button
           type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-all duration-200"
+          className="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600 transition-all duration-200"
         >
-          Submit
+          Add
         </button>
       </form>
-    </div>
+    </>
   );
 }
 
