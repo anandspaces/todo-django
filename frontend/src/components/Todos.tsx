@@ -1,18 +1,19 @@
 import { useDispatch, useSelector } from "react-redux"
-import { removeTodo } from "../features/todo/todoSlice"
+import { removeTodo, Todo } from "../features/todo/todoSlice"
+import { AppDispatch, RootState } from "../app/store"
 
 function Todos() {
-  const todos = useSelector(state => state.todos)
-  const dispatch = useDispatch()
+  const todos = useSelector((state: RootState) => state.todos.todos)
+  const dispatch = useDispatch<AppDispatch>()
 
   return (
     <>
     <div>Todos</div>
-    {todos.map((tools)=>(
+    {todos.map((todo: Todo)=>(
       <li key={todo.id}>
-        {todos.text}
+        {todo.text}
         <button
-          onClick={()=> dispatch(removeTodo(todos.id))}
+          onClick={() => dispatch(removeTodo(todo.id))}
         >X</button>
       </li>
     ))}

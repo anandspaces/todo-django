@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../features/todo/todoSlice";
+import { AppDispatch } from "../app/store";
 
 function AddTodo() {
-  const [input,setInput] = useState("");
-  const dispatch = useDispatch();
-  function addTodoHandler(e:any){
+  const [input,setInput] = useState<string>("");
+  const dispatch = useDispatch<AppDispatch>();
+
+  function addTodoHandler(e: React.FormEvent<HTMLFormElement>){
     e.preventDefault();
+    if (input.trim() === "") return;
     dispatch(addTodo(input))
     setInput('')
   }
