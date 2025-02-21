@@ -16,8 +16,8 @@ function AddTodo() {
 
   return (
     <>
-    <form onSubmit={addTodoHandler} className="flex">
     <div>AddTodo</div>
+    <form onSubmit={addTodoHandler} className="flex">
     <input
      type="text"
      className="mt-2"
@@ -25,6 +25,7 @@ function AddTodo() {
      value={input}
      onChange={(e)=>setInput(e.target.value)}
     />
+    <button type='submit' className="mt-2">Submit</button>
     </form>
 
     </>
