@@ -13,7 +13,7 @@ function AddTodo({ onAdd }: { onAdd: () => void }) {
     if (input.trim() === "") return;
 
     try {
-      await axios.post("http://127.0.0.1:8000/api/todos/", {
+      await axios.post("http://127.0.0.1:8000/todos/", {
         text: input,
       });
       setInput("");
