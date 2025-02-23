@@ -10,5 +10,5 @@ class TodoListCreateView(generics.ListCreateAPIView):
 
 # DestroyAPIView handles DELETE Requests
 class TodoDeleteView(generics.DestroyAPIView):
-  queryset = TodoModel.object.all()
+  queryset = TodoModel.objects.all()
   serializer_class = TodoSerializer
