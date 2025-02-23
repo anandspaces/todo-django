@@ -13,7 +13,7 @@ function Todos() {
   // Fetch Todos from Django API
   const fetchTodos = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/api/todos/");
+      const response = await axios.get("http://127.0.0.1:8000/todos/");
       setNewtodos(response.data);
       setBackend(true); // Backend is available
     } catch (error) {
@@ -27,7 +27,7 @@ function Todos() {
   const removeTodoHandler = async (id: number) => {
     if(backend) {
       try {
-        await axios.delete(`http://127.0.0.1:8000/api/todos/${id}/`);
+        await axios.delete(`http://127.0.0.1:8000/todos/${id}/`);
         fetchTodos(); // Refresh todos after deleting
       } catch (error) {
         console.error("Failed to delete from backend:", error);
