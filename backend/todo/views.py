@@ -1,7 +1,14 @@
-from django.shortcuts import HttpResponse
-from django.views import View
+from rest_framework import generics
+from .models import TodoModel
+from .serializers import TodoSerializer
 
-# Create your views here.
-class Home(View):
-  def get(self, request, *args, **kwargs):
-    return HttpResponse("Hello World!")
+# ListCreateAPIView handles GET and POST request
+class TodoListCreateView(generics.ListCreateAPIView):
+  queryset = TodoModel.objects.all().order_by('created_at')
+  serializer_class = TodoSerializer
+
+
+# DestroyAPIView handles DELETE Requests
+class TodoDeleteView(generics.DestroyAPIView):
+  queryset = TodoModel.object.all()
+  serializer_class = TodoSerializer
