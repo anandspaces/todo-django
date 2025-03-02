@@ -1,12 +1,10 @@
-import { useState } from "react";
 import AddTodo from "./components/AddTodo";
 import Todos from "./components/Todos";
 
 function App() {
-  const [refresh, setRefresh] = useState(false)
 
   function refreshTodos() {
-    setRefresh(!refresh);
+    window.location.reload();
   };
 
   return (
